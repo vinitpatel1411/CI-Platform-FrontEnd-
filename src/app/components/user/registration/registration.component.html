@@ -8,7 +8,7 @@
 
               <mat-form-field appearance="outline" class="example-full-width" class="pb-3">
                   <mat-label>First Name</mat-label>
-                  <input type="email" matInput formControlName="firstName">
+                  <input type="text" matInput formControlName="firstName">
                   @if (commonFunctionService.controlValidity(registerForm, 'firstName')) {
                   <mat-error>
                       {{ commonFunctionService.getErrorMessage(registerForm, 'firstName', 'First Name') }}
@@ -18,7 +18,7 @@
 
               <mat-form-field appearance="outline" class="example-full-width" class="pb-3">
                   <mat-label>Last Name</mat-label>
-                  <input type="email" matInput formControlName="lastName">
+                  <input type="text" matInput formControlName="lastName">
                   @if (commonFunctionService.controlValidity(registerForm, 'lastName')) {
                   <mat-error>
                       {{ commonFunctionService.getErrorMessage(registerForm, 'lastName', 'Last Name') }}
@@ -28,7 +28,7 @@
 
               <mat-form-field appearance="outline" class="example-full-width" class="pb-3">
                   <mat-label>Phone Number</mat-label>
-                  <input type="email" matInput formControlName="phoneNumber">
+                  <input type="number" matInput formControlName="phoneNumber">
                   @if (commonFunctionService.controlValidity(registerForm, 'phoneNumber')) {
                   <mat-error>
                       {{ commonFunctionService.getErrorMessage(registerForm, 'phoneNumber', 'Phone Number') }}

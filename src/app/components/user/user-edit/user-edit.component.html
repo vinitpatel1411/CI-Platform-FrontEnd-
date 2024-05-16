@@ -4,14 +4,151 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-12 col-md-3">
       <mat-card class="user-profile">
-        <img mat-card-image class=" rounded-image position-relative"
-                      [src]="'assets/img/volunteer1.png'"/>
+        <img mat-card-image class=" rounded-image position-relative" [src]="'assets/img/volunteer1.png'"/>
+        <mat-card-content>
+          <h2>{{userData.firstName+ " " +userData.lastName}}</h2>
+        </mat-card-content>
+        <mat-card-actions>
+          <a class="link-dark link-underline-opacity-0" href="#">Change Password</a>
+        </mat-card-actions>
       </mat-card>
     </div>
-    <div class="col-sm-9">
+    <div class="col-12 col-md-9">
+      <div class="row">
+        <form>
+          <div class="basicInfo">
+            <h2>Basic Information</h2>
+            <mat-divider></mat-divider>
+            <div class="row mt-3">
+              <div class="col-12 col-md-6">
+                <mat-label>Name*</mat-label>
+                <mat-form-field appearance="outline" class="w-100 mt-1">
+                  <input type="text" matInput placeholder="Enter Your Name"/>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-label>Surname*</mat-label>
+                <mat-form-field appearance="outline" class="w-100 mt-1">
+                  <input type="text" matInput placeholder="Enter Your Surname"/>
+                </mat-form-field>
+              </div>
+            </div>
 
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <mat-label>Employee ID</mat-label>
+                <mat-form-field appearance="outline" class="w-100 mt-1">
+                  <input type="text" matInput placeholder="Enter Your Employee Id"/>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-label>Manager</mat-label>
+                <mat-form-field appearance="outline" class="w-100 mt-1">
+                  <input type="text" matInput placeholder="Enter Your Manager Details"/>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <mat-label>Title</mat-label>
+                <mat-form-field appearance="outline" class="w-100 mt-1">
+                  <input type="text" matInput placeholder="Enter title"/>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-label>Department</mat-label>
+                <mat-form-field appearance="outline" class="w-100 mt-1">
+                  <input type="text" matInput placeholder="Enter Your department Details"/>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                <mat-label>My Profile*</mat-label>
+                <mat-form-field appearance="outline" class="w-100 mt-1">
+                  <textarea rows="4" matInput placeholder="Enter your comments..."></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                <mat-label>Why I Volunteer?</mat-label>
+                <mat-form-field appearance="outline" class="w-100 mt-1">
+                  <textarea rows="4" matInput placeholder="Enter your comments..."></textarea>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="addressInfo">
+            <h2>Address Information</h2>
+            <mat-divider></mat-divider>
+            <div class="row mt-3">
+              <div class="col-12 col-md-6">
+                <mat-label>City*</mat-label>
+                <mat-form-field appearance="outline" class="w-100 mt-1">
+                  <mat-select>
+                    <mat-option value="NewYork">New York</mat-option>
+                    <mat-option value="Mumbai">Mumbai</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-label>Country*</mat-label>
+                <mat-form-field appearance="outline" class="w-100 mt-1">
+                  <mat-select>
+                    <mat-option value="NewYork">USA</mat-option>
+                    <mat-option value="Mumbai">India</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="professionalInfo">
+            <h2>Professional Information</h2>
+            <mat-divider></mat-divider>
+            <div class="row mt-3">
+              <div class="col-12 col-md-6">
+                <mat-label>Availablity</mat-label>
+                <mat-form-field appearance="outline" class="w-100 mt-1">
+                  <mat-select>
+                    <mat-option value="daily">Daily</mat-option>
+                    <mat-option value="weekend">Weekend</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6">
+                <mat-label>LinkedIn</mat-label>
+                <mat-form-field appearance="outline" class="w-100 mt-1">
+                  <input type="text" matInput placeholder="Enter linkedIn URL"/>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills">
+            <h2>My Skills</h2>
+            <mat-divider></mat-divider>
+            <mat-list class="w-100 mt-3 mb-3 border p-3" role="list">
+              <mat-list-item role="listitem">Item 1</mat-list-item>
+              <mat-list-item role="listitem">Item 2</mat-list-item>
+              <mat-list-item role="listitem">Item 3</mat-list-item>
+            </mat-list>
+            <button mat-stroked-button extended  class="outline-btn mb-3 save-button"> Add   Skills </button>
+          </div>
+
+          <div class="d-flex justify-content-end">
+            <button mat-stroked-button extended color="warn" class="outline-btn mt-3 mb-5" style="width: 150px;"> Save </button>
+          </div>
+
+        </form>
+      </div>
     </div>
   </div>
 </div>
