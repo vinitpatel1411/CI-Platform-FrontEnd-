@@ -1,0 +1,10 @@
+.profile-img {
+  height: 100%;
+  width: 50px;
+  border-radius: 60%;
+  margin-right: 2px;
+}
+
+.ml-0 {
+  margin-left: 0px !important;
+}
