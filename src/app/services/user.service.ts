@@ -42,6 +42,14 @@ export class UserService {
     return this.http.post<ApiResponseDTO>(baseAPIUrl + endPoint.ResetPassword, body);
   }
 
+  updateUser(updatedUser: CurrentUserDTO) : Observable<ApiResponseDTO>{
+    return this.http.post<ApiResponseDTO>(baseAPIUrl + endPoint.UpdateUser, updatedUser);
+  }
+
+  isEmployeeIdUnique(employeeId : string | null) :Observable<ApiResponseDTO>{
+    return this.http.get<ApiResponseDTO>(baseAPIUrl + endPoint.IsEmployeeIdUnique + "?employeeId=" + employeeId);
+  }
+
   public currentUserValue(): any {
     if (isPlatformBrowser(this.platformId)){
       const user = localStorage.getItem('currentUser');

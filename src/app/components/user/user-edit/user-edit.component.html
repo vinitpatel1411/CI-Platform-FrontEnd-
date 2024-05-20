@@ -11,13 +11,13 @@
           <h2>{{userData.firstName+ " " +userData.lastName}}</h2>
         </mat-card-content>
         <mat-card-actions>
-          <a class="link-dark link-underline-opacity-0" href="#">Change Password</a>
+          <a class="link-dark link-underline-opacity-0"  (click)="openDialog()">Change Password</a>
         </mat-card-actions>
       </mat-card>
     </div>
     <div class="col-12 col-md-9">
       <div class="row">
-        <form>
+        <form [formGroup]="userEditForm">
           <div class="basicInfo">
             <h2>Basic Information</h2>
             <mat-divider></mat-divider>
@@ -25,13 +25,23 @@
               <div class="col-12 col-md-6">
                 <mat-label>Name*</mat-label>
                 <mat-form-field appearance="outline" class="w-100 mt-1">
-                  <input type="text" matInput placeholder="Enter Your Name"/>
+                  <input type="text" matInput formControlName="firstName" placeholder="Enter Your Name"/>
+                  @if (commonFunctionService.controlValidity(userEditForm, 'firstName')) {
+                    <mat-error>
+                        {{ commonFunctionService.getErrorMessage(userEditForm, 'firstName', 'First Name') }}
+                    </mat-error>
+                  }
                 </mat-form-field>
               </div>
               <div class="col-12 col-md-6">
                 <mat-label>Surname*</mat-label>
                 <mat-form-field appearance="outline" class="w-100 mt-1">
-                  <input type="text" matInput placeholder="Enter Your Surname"/>
+                  <input type="text" matInput formControlName="lastName" placeholder="Enter Your Surname"/>
+                  @if (commonFunctionService.controlValidity(userEditForm, 'lastName')) {
+                    <mat-error>
+                        {{ commonFunctionService.getErrorMessage(userEditForm, 'lastName', 'Surname') }}
+                    </mat-error>
+                  }
                 </mat-form-field>
               </div>
             </div>
@@ -40,13 +50,23 @@
               <div class="col-12 col-md-6">
                 <mat-label>Employee ID</mat-label>
                 <mat-form-field appearance="outline" class="w-100 mt-1">
-                  <input type="text" matInput placeholder="Enter Your Employee Id"/>
+                  <input type="text" matInput formControlName="employeeId" placeholder="Enter Your Employee Id"/>
+                  @if (commonFunctionService.controlValidity(userEditForm, 'employeeId')) {
+                    <mat-error>
+                        {{ commonFunctionService.getErrorMessage(userEditForm, 'employeeId', 'EMployee Id') }}
+                    </mat-error>
+                  }
                 </mat-form-field>
               </div>
               <div class="col-12 col-md-6">
                 <mat-label>Manager</mat-label>
                 <mat-form-field appearance="outline" class="w-100 mt-1">
-                  <input type="text" matInput placeholder="Enter Your Manager Details"/>
+                  <input type="text" matInput formControlName="manager" placeholder="Enter Your Manager Details"/>
+                  @if (commonFunctionService.controlValidity(userEditForm, 'manager')) {
+                    <mat-error>
+                        {{ commonFunctionService.getErrorMessage(userEditForm, 'manager', 'Manager') }}
+                    </mat-error>
+                  }
                 </mat-form-field>
               </div>
             </div>
@@ -55,13 +75,23 @@
               <div class="col-12 col-md-6">
                 <mat-label>Title</mat-label>
                 <mat-form-field appearance="outline" class="w-100 mt-1">
-                  <input type="text" matInput placeholder="Enter title"/>
+                  <input type="text" matInput formControlName="title" placeholder="Enter title"/>
+                  @if (commonFunctionService.controlValidity(userEditForm, 'title')) {
+                    <mat-error>
+                        {{ commonFunctionService.getErrorMessage(userEditForm, 'title', 'title') }}
+                    </mat-error>
+                  }
                 </mat-form-field>
               </div>
               <div class="col-12 col-md-6">
                 <mat-label>Department</mat-label>
                 <mat-form-field appearance="outline" class="w-100 mt-1">
-                  <input type="text" matInput placeholder="Enter Your department Details"/>
+                  <input type="text" matInput formControlName="department" placeholder="Enter Your department Details"/>
+                  @if (commonFunctionService.controlValidity(userEditForm, 'department')) {
+                    <mat-error>
+                        {{ commonFunctionService.getErrorMessage(userEditForm, 'department', 'Department') }}
+                    </mat-error>
+                  }
                 </mat-form-field>
               </div>
             </div>
@@ -70,7 +100,12 @@
               <div class="col-12">
                 <mat-label>My Profile*</mat-label>
                 <mat-form-field appearance="outline" class="w-100 mt-1">
-                  <textarea rows="4" matInput placeholder="Enter your comments..."></textarea>
+                  <textarea rows="4" matInput formControlName="profileText" placeholder="Enter your comments..."></textarea>
+                  @if (commonFunctionService.controlValidity(userEditForm, 'profileText')) {
+                    <mat-error>
+                        {{ commonFunctionService.getErrorMessage(userEditForm, 'profileText', 'My Profile') }}
+                    </mat-error>
+                  }
                 </mat-form-field>
               </div>
             </div>
@@ -79,7 +114,12 @@
               <div class="col-12">
                 <mat-label>Why I Volunteer?</mat-label>
                 <mat-form-field appearance="outline" class="w-100 mt-1">
-                  <textarea rows="4" matInput placeholder="Enter your comments..."></textarea>
+                  <textarea rows="4" matInput formControlName="whyIVolunteer"  placeholder="Enter your comments..."></textarea>
+                  @if (commonFunctionService.controlValidity(userEditForm, 'whyIVolunteer')) {
+                    <mat-error>
+                        {{ commonFunctionService.getErrorMessage(userEditForm, 'whyIVolunteer', 'Details') }}
+                    </mat-error>
+                  }
                 </mat-form-field>
               </div>
             </div>
@@ -91,20 +131,30 @@
             <div class="row mt-3">
               <div class="col-12 col-md-6">
                 <mat-label>City*</mat-label>
-                <mat-form-field appearance="outline" class="w-100 mt-1">
-                  <mat-select>
-                    <mat-option value="NewYork">New York</mat-option>
-                    <mat-option value="Mumbai">Mumbai</mat-option>
+                <mat-form-field appearance="outline"  class="w-100 mt-1">
+                  <mat-select formControlName="city" placeholder="Select a City">
+                    <mat-option value="">Select a City</mat-option>
+                    <mat-option *ngFor="let city of cities" [value]="city.id.toString()">{{city.name}}</mat-option>
                   </mat-select>
+                  @if (commonFunctionService.controlValidity(userEditForm, 'city')) {
+                    <mat-error>
+                        {{ commonFunctionService.getErrorMessage(userEditForm, 'city', 'City') }}
+                    </mat-error>
+                  }
                 </mat-form-field>
               </div>
               <div class="col-12 col-md-6">
                 <mat-label>Country*</mat-label>
-                <mat-form-field appearance="outline" class="w-100 mt-1">
-                  <mat-select>
-                    <mat-option value="NewYork">USA</mat-option>
-                    <mat-option value="Mumbai">India</mat-option>
+                <mat-form-field appearance="outline"  class="w-100 mt-1">
+                  <mat-select formControlName="country" placeholder="Select a Country">
+                    <mat-option value="">Select a Country</mat-option>
+                    <mat-option *ngFor="let country of countries" [value]="country.id.toString()">{{country.name}}</mat-option>
                   </mat-select>
+                  @if (commonFunctionService.controlValidity(userEditForm, 'country')) {
+                    <mat-error>
+                        {{ commonFunctionService.getErrorMessage(userEditForm, 'country', 'Country') }}
+                    </mat-error>
+                  }
                 </mat-form-field>
               </div>
             </div>
@@ -116,17 +166,27 @@
             <div class="row mt-3">
               <div class="col-12 col-md-6">
                 <mat-label>Availablity</mat-label>
-                <mat-form-field appearance="outline" class="w-100 mt-1">
-                  <mat-select>
+                <mat-form-field  appearance="outline"  class="w-100 mt-1">
+                  <mat-select formControlName="availablity" placeholder="Select your availablity">
                     <mat-option value="daily">Daily</mat-option>
                     <mat-option value="weekend">Weekend</mat-option>
                   </mat-select>
+                  @if (commonFunctionService.controlValidity(userEditForm, 'availablity')) {
+                    <mat-error>
+                        {{ commonFunctionService.getErrorMessage(userEditForm, 'availablity', 'Availablity') }}
+                    </mat-error>
+                  }
                 </mat-form-field>
               </div>
               <div class="col-12 col-md-6">
                 <mat-label>LinkedIn</mat-label>
-                <mat-form-field appearance="outline" class="w-100 mt-1">
-                  <input type="text" matInput placeholder="Enter linkedIn URL"/>
+                <mat-form-field appearance="outline"  class="w-100 mt-1">
+                  <input type="text" matInput placeholder="Enter linkedIn URL" formControlName="linkedInUrl"/>
+                  @if (commonFunctionService.controlValidity(userEditForm, 'linkedInUrl')) {
+                    <mat-error>
+                        {{ commonFunctionService.getErrorMessage(userEditForm, 'linkedInUrl', 'LinkedIn Profile Url') }}
+                    </mat-error>
+                  }
                 </mat-form-field>
               </div>
             </div>
@@ -144,7 +204,7 @@
           </div>
 
           <div class="d-flex justify-content-end">
-            <button mat-stroked-button extended color="warn" class="outline-btn mt-3 mb-5" style="width: 150px;"> Save </button>
+            <button (click)="save()" mat-stroked-button extended color="warn" class="outline-btn mt-3 mb-5" style="width: 150px;"> Save </button>
           </div>
 
         </form>

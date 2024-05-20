@@ -41,4 +41,10 @@ export interface CurrentUserDTO {
   linkedInUrl: string;
   title: string;
   status: boolean;
+  manager:string;
+  availablity:string;
+  city:string;
+  country:string;
+  cityId: number;
+  countryId:number;
 }

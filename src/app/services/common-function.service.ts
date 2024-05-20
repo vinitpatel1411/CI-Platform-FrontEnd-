@@ -58,6 +58,11 @@ export class CommonFunctionService {
       return 'New Password should not be same as Previous password.';
     }
 
+    if(control?.hasError('notUnique'))
+    {
+      return 'The Employee already exist, please enter unique employee id.';
+    }
+
     return '';
   }
 }

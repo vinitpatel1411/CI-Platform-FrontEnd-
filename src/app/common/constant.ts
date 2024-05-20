@@ -8,12 +8,6 @@ export const endPoint = {
     ResetPassword: "User/ResetPassword",
     CheckPassWord:"User/CheckPassWord",
 
-    GetAllBanners: "Common/GetAllBanners",
-    GetAllUsers: "Common/GetAllUsers",
-    GetAllCountries: "Common/GetAllCountries",
-    GetCitiesByCountry: "Common/GetCitiesByCountry/",
-    GetAllThemes: "Common/GetAllThemes",
-    GetAllSkills: "Common/GetAllSkills",
     AddToFavourite: "Mission/AddToFavourite",
     GetMissionsByFilter: "Mission/GetMissionsByFilter",
     RecommandMissionToWorkers:"Mission/RecommandMissionToWorkers",
@@ -26,6 +20,12 @@ export const endPoint = {
 
     GetStory: "Story/GetStory",
     GetStoryById: "Story/GetStoryById",
+
+    GetCities: "Common/getcities",
+    GetCountries: "Common/getcountries",
+
+    UpdateUser : "User/updateUser",
+    IsEmployeeIdUnique : "User/isEmployeeIdUnique"
 };
 
 export const StatusCodes = {
