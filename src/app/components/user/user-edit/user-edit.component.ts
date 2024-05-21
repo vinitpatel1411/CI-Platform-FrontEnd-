@@ -69,8 +69,8 @@ export class UserEditComponent implements OnInit{
     this.selectedCountryId = this.userData.countryId;
     this.userEditForm.patchValue({
       ... this.userData,
-      city: this.userData.cityId.toString(),
-      country: this.userData.countryId.toString()
+      city:  this.userData.cityId != null ? this.userData.cityId.toString() : null,
+      country: this.userData.countryId != null ? this.userData.countryId.toString() : null
     });
 
     if(!isNaN(this.selectedCountryId))
@@ -132,6 +132,7 @@ export class UserEditComponent implements OnInit{
     this.userData.whyIVolunteer = this.whyIVolunteer.value;
     this.userData.cityId = this.cityId.value;
     this.userData.countryId = this.countryId.value;
+    this.userData.linkedInUrl = this.linkedInUrl.value;
     // this.userData.cityId = this.selectedCityId as number;
     // this.userData.countryId = this.selectedCountryId as number;
   }
@@ -193,7 +194,7 @@ export class UserEditComponent implements OnInit{
 
     if(this.userEditForm.valid){
       this.UpdateUserData();
-      console.log(this.userData);
+      // console.log(this.userData);
       this.userService.updateUser(this.userData).subscribe(result =>
         {
           if(result.code == 200 && result.data != null){
@@ -214,7 +215,11 @@ export class UserEditComponent implements OnInit{
   }
 
   openDialog(){
-    const dialogRef = this.dialog.open(ChangePasswordComponent);
+    const dialogRef = this.dialog.open(ChangePasswordComponent, {
+      width: '50%',
+      height:'70%',
+      data: {email: this.userData.email}
+    });
   }
 
 }

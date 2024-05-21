@@ -25,7 +25,9 @@ export const endPoint = {
     GetCountries: "Common/getcountries",
 
     UpdateUser : "User/updateUser",
-    IsEmployeeIdUnique : "User/isEmployeeIdUnique"
+    IsEmployeeIdUnique : "User/isEmployeeIdUnique",
+    checkOldPassword : "User/checkOldPassword",
+    changePassword: "User/changePassword"
 };
 
 export const StatusCodes = {

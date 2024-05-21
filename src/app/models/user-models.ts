@@ -48,3 +48,13 @@ export interface CurrentUserDTO {
   cityId: number;
   countryId:number;
 }
+
+export interface checkOldPasswordDTO{
+  email: string;
+  password: string;
+}
+
+export interface changePasswordDTO{
+  email:string;
+  newPassword:string
+}

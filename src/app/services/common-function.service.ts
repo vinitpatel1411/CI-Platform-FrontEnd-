@@ -63,6 +63,15 @@ export class CommonFunctionService {
       return 'The Employee already exist, please enter unique employee id.';
     }
 
+    if(control?.hasError('wrongPassword'))
+    {
+      return 'You have Enter incorect password';
+    }
+
+    if(control?.hasError("similar"))
+    {
+      return "New Password can not be same as old password";
+    }
     return '';
   }
 }

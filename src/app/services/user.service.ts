@@ -1,7 +1,7 @@
 import { HttpClient} from '@angular/common/http';
 import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CurrentUserDTO, LoginDTO, RegisterDTO, ResetPasswordDTO } from '../models/user-models';
+import { CurrentUserDTO, LoginDTO, RegisterDTO, ResetPasswordDTO, changePasswordDTO, checkOldPasswordDTO } from '../models/user-models';
 import { ApiResponseDTO } from '../models/apiresponse-model';
 import { baseAPIUrl, endPoint } from '../common/constant';
 import { isPlatformBrowser } from '@angular/common';
@@ -48,6 +48,14 @@ export class UserService {
 
   isEmployeeIdUnique(employeeId : string | null) :Observable<ApiResponseDTO>{
     return this.http.get<ApiResponseDTO>(baseAPIUrl + endPoint.IsEmployeeIdUnique + "?employeeId=" + employeeId);
+  }
+
+  checkOldPassword(model: checkOldPasswordDTO) : Observable<ApiResponseDTO>{
+    return this.http.post<ApiResponseDTO>(baseAPIUrl + endPoint.checkOldPassword, model);
+  }
+
+  changePassword(model: changePasswordDTO) : Observable<ApiResponseDTO>{
+    return this.http.post<ApiResponseDTO>(baseAPIUrl + endPoint.changePassword,model);
   }
 
   public currentUserValue(): any {

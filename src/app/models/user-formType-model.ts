@@ -37,3 +37,9 @@ export type userEditForm = {
   availablity:FormControl<string | null>;
   linkedInUrl: FormControl<string | null>;
 };
+
+export type changePasswordForm = {
+  oldPassword: FormControl<string | null>;
+  newPassword: FormControl<string | null>;
+  confirmPassword: FormControl<string | null>;
+}

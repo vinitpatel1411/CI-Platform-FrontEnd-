@@ -23,7 +23,7 @@ export class HeaderComponent {
 
   constructor(private userService: UserService, private router: Router) {
     this.currentUserData = this.userService.currentUserValue();
-    console.log(this.currentUserData);
+    // console.log(this.currentUserData);
   }
 
   ngOnInit(): void {
