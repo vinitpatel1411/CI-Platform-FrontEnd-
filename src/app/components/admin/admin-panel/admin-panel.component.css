@@ -1,0 +1,48 @@
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidenav-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 80px; /* Adjust based on the height of your header */
+}
+
+mat-sidenav {
+  width: 250px;
+  background-color: orange; /* Set the background color to orange */
+  color: white; /* Set the font color to white */
+}
+
+.mat-nav-list .mat-list-item {
+  color: white; /* Set font color to white */
+}
+
+.mat-nav-list .mat-list-item:hover {
+  background-color: white !important; /* Change background color on hover */
+  color: orange !important; /* Change font color on hover */
+}
+
+.mat-nav-list .mat-list-item:hover .mat-icon {
+  color: orange !important; /* Change icon color on hover */
+}
+
+.mat-icon {
+  color: white; /* Set the icon color to white */
+  margin-right: 8px; /* Add some spacing between icon and text */
+}
+
+mat-sidenav-content {
+  transition: margin 0.3s ease;
+}
+
+.sidenav-opened {
+  margin-left: 250px; /* Adjust this value to match the width of your sidenav */
+}
+
+.container {
+  padding: 16px;
+}

@@ -7,6 +7,7 @@ import { ResetPasswordComponent } from './components/user/reset-password/reset-p
 import { MissionListingComponent } from './components/mission/mission-listing/mission-listing.component';
 import { authGuard } from './auth-guard/auth.guard';
 import { UserEditComponent } from './components/user/user-edit/user-edit.component';
+import { AdminPanelComponent } from './components/admin/admin-panel/admin-panel.component';
 
 export const routes: Routes = [
   {
@@ -39,6 +40,12 @@ export const routes: Routes = [
     path:'user-edit',
     component: UserEditComponent,
     title:'CI | User Edit',
+    canActivate:[authGuard]
+  },
+  {
+    path:'admin-panel',
+    component:AdminPanelComponent,
+    title:'CI | Admin-Panel',
     canActivate:[authGuard]
   }
 ];

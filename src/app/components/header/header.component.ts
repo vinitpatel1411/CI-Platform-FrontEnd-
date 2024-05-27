@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
@@ -7,11 +7,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { CurrentUserDTO } from '../../models/user-models';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { StatusCodes } from '../../common/constant';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatButtonModule, MatSelectModule, MatMenuModule, MatIconModule, CommonModule],
+  imports: [MatButtonModule, MatSelectModule, MatMenuModule, MatIconModule, CommonModule,MatSnackBarModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -20,13 +22,14 @@ export class HeaderComponent {
   myWatchList: boolean = false;
   showButton: boolean = false;
   @Output() isWhatchList = new EventEmitter<boolean>();
+  isAdmin : boolean = false;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(public userService: UserService, private router: Router, private snackBar: MatSnackBar) {
     this.currentUserData = this.userService.currentUserValue();
-    // console.log(this.currentUserData);
   }
 
   ngOnInit(): void {
+
     if (this.router.url === '/mission-listing') {
       this.showButton = true;
     }
@@ -56,5 +59,9 @@ export class HeaderComponent {
 
   myProfile(){
     this.router.navigateByUrl(`user-edit`);
+  }
+
+  adminPanel(){
+    this.router.navigateByUrl('admin-panel');
   }
 }

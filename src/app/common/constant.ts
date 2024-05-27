@@ -27,7 +27,12 @@ export const endPoint = {
     UpdateUser : "User/updateUser",
     IsEmployeeIdUnique : "User/isEmployeeIdUnique",
     checkOldPassword : "User/checkOldPassword",
-    changePassword: "User/changePassword"
+    changePassword: "User/changePassword",
+    GetUserDetails:"User/userDetails",
+    GetUserRole: "User/getUserRole",
+    GetUsers: "User/getUsers",
+    UpdateUserStatus: "User/updateUserStatus",
+    DeleteUser: "User/deleteUser"
 };
 
 export const StatusCodes = {

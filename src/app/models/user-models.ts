@@ -47,6 +47,7 @@ export interface CurrentUserDTO {
   country:string;
   cityId: number;
   countryId:number;
+  Role:string;
 }
 
 export interface checkOldPasswordDTO{

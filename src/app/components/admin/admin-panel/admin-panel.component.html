@@ -1,0 +1,47 @@
+<div class="main-layout">
+  <app-admin-header (toggleSidenav)="sidenav.toggle()"></app-admin-header>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" (openedChange)="onSidenavToggle()">
+      <!-- Side nav content goes here -->
+      <mat-nav-list>
+        <mat-list-item (click)="selectNavItem('user')">
+          <mat-icon>person</mat-icon>
+          User
+        </mat-list-item>
+        <!-- <mat-list-item (click)="selectNavItem('cms')">
+          <mat-icon>description</mat-icon>
+          CMS Page
+        </mat-list-item> -->
+        <mat-list-item (click)="selectNavItem('mission')">
+          <mat-icon>flag</mat-icon>
+          Mission
+        </mat-list-item>
+        <mat-list-item (click)="selectNavItem('missionTheme')">
+          <mat-icon>palette</mat-icon>
+          Mission Theme
+        </mat-list-item>
+        <mat-list-item (click)="selectNavItem('missionSkills')">
+          <mat-icon>build</mat-icon>
+          Mission Skills
+        </mat-list-item>
+        <mat-list-item (click)="selectNavItem('missionApplication')">
+          <mat-icon>assignment</mat-icon>
+          Mission Application
+        </mat-list-item>
+        <mat-list-item (click)="selectNavItem('story')">
+          <mat-icon>book</mat-icon>
+          Story
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content [class.sidenav-opened]="sidenavOpened">
+      <!-- Your main content here -->
+      <div class="container">
+        <!-- Main content goes here -->
+        <div class="container">
+          <ng-container *ngComponentOutlet="selectedComponent"></ng-container>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

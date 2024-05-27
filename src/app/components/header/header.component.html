@@ -13,7 +13,8 @@
       </span>
   </button>
   <mat-menu #Menu="matMenu">
-      <button mat-menu-item (click)="myProfile()" >My Profile</button>
+      <button mat-menu-item *ngIf="userService.userRole === 'user'" (click)="myProfile()" >My Profile</button>
+      <button mat-menu-item *ngIf="userService.userRole === 'admin'" (click)="adminPanel()" >Admin Panel</button>
       <button mat-menu-item (click)="MyWatchList()" [ngStyle]="{ 'display': showButton ? 'block' : 'none' }">My
           WatchList</button>
       <button mat-menu-item (click)="logOut()">Log Out</button>

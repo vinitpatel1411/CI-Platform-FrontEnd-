@@ -1,0 +1,17 @@
+.rounded-image{
+  border-radius: 50% !important;
+  width: 200px;
+  height:200px;
+  object-fit: cover;
+}
+
+.user-profile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.save-button {
+  color: #757575 !important;
+  border-color: #757575 !important;
+}

@@ -1,0 +1,24 @@
+<div class="d-flex justify-content-between align-items-center py-3 navbar navbar-shadow">
+
+  <div>
+    <button mat-icon-button class="me-5 mt-0" (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
+  <div class="current-date">
+    {{ currentDate }}
+  </div>
+
+  <button class="ms-auto" mat-button [matMenuTriggerFor]="Menu">
+      <span class="d-flex justify-content-center align-items-center">
+          <img [src]="(currentUserData != null && currentUserData.avatar) ? 'assets/img/' + currentUserData.avatar : 'assets/img/volunteer1.png'"
+              class="profile-img me-1" />
+          {{ currentUserData.firstName + " " + currentUserData.lastName }} <mat-icon>expand_more</mat-icon>
+      </span>
+  </button>
+  <mat-menu #Menu="matMenu">
+      <button mat-menu-item (click)="logOut()">Log Out</button>
+  </mat-menu>
+
+</div>

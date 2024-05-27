@@ -1,0 +1,75 @@
+<div class="p-5 d-flex flex-column justify-content-between align-items-center">
+  <form class="w-100 my-auto" [formGroup]="registerForm">
+      <div class="d-flex flex-column">
+
+      <mat-form-field appearance="outline" class="example-full-width" class="pb-3">
+          <mat-label>First Name</mat-label>
+          <input type="text" matInput formControlName="firstName">
+          @if (commonFunctionService.controlValidity(registerForm, 'firstName')) {
+          <mat-error>
+              {{ commonFunctionService.getErrorMessage(registerForm, 'firstName', 'First Name') }}
+          </mat-error>
+          }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width" class="pb-3">
+          <mat-label>Last Name</mat-label>
+          <input type="text" matInput formControlName="lastName">
+          @if (commonFunctionService.controlValidity(registerForm, 'lastName')) {
+          <mat-error>
+              {{ commonFunctionService.getErrorMessage(registerForm, 'lastName', 'Last Name') }}
+          </mat-error>
+          }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width" class="pb-3">
+          <mat-label>Phone Number</mat-label>
+          <input type="number" matInput formControlName="phoneNumber">
+          @if (commonFunctionService.controlValidity(registerForm, 'phoneNumber')) {
+          <mat-error>
+              {{ commonFunctionService.getErrorMessage(registerForm, 'phoneNumber', 'Phone Number') }}
+          </mat-error>
+          }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+          <mat-label>Email Address</mat-label>
+          <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+          @if (commonFunctionService.controlValidity(registerForm, 'email')) {
+          <mat-error>
+              {{ commonFunctionService.getErrorMessage(registerForm, 'email', 'Email Address') }}
+          </mat-error>
+          }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width" class="pt-3 pb-3">
+          <mat-label>Password</mat-label>
+          <input [type]="passwordHide ? 'password' : 'text'" matInput formControlName="password">
+          <mat-icon matSuffix (click)="passwordHide = !passwordHide">{{passwordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          @if (commonFunctionService.controlValidity(registerForm, 'password')) {
+          <mat-error>
+              {{ commonFunctionService.getErrorMessage(registerForm, 'password', 'Password') }}
+          </mat-error>
+          }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="example-full-width" class="pb-3">
+          <mat-label>Confirm Password</mat-label>
+          <input [type]="confirmPasswordHide ? 'password' : 'text'" matInput formControlName="confirmPassword" (keyup)="checkpassword()">
+          <mat-icon matSuffix (click)="confirmPasswordHide = !confirmPasswordHide">{{confirmPasswordHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          @if (commonFunctionService.controlValidity(registerForm, 'confirmPassword')) {
+          <mat-error>
+              {{ commonFunctionService.getErrorMessage(registerForm, 'confirmPassword', 'Confirm Password') }}
+          </mat-error>
+          }
+      </mat-form-field>
+
+      <div class="d-flex justify-content">
+        <button mat-stroked-button extended color="warn" class="outline-btn"  style="width: 150px;" (click)="submit()">Register</button>
+        <button mat-stroked-button extended  class="outline-btn ms-4 save-button" (click)="onCloseClick()"> Close </button>
+      </div>
+
+    </div>
+  </form>
+</div>
+

@@ -40,6 +40,10 @@ export class LoginComponent {
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
+  get email(){
+    return this.loginForm.get('email') as FormControl;
+  }
+
   submit = (): void => {
     if (this.loginForm.valid) {
       const data: LoginDTO = { ...this.loginForm.value } as LoginDTO;
@@ -53,6 +57,9 @@ export class LoginComponent {
             this.userService.currentUser.next(result.data.data);
             localStorage.setItem("token", result.data.token);
             localStorage.setItem("currentUser", JSON.stringify(result.data.data));
+
+            this.userService.getUserRole(this.email.value);
+
             this.redirectToUrl("/mission-listing");
           }
           // this.startLogoutTimer();
