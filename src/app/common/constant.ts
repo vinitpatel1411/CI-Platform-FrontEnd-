@@ -32,7 +32,29 @@ export const endPoint = {
     GetUserRole: "User/getUserRole",
     GetUsers: "User/getUsers",
     UpdateUserStatus: "User/updateUserStatus",
-    DeleteUser: "User/deleteUser"
+    DeleteUser: "User/deleteUser",
+
+    GetMissionThemes: "MissionTheme/getMissionThemes",
+    AddMission: "Mission/addMission",
+
+    GetAllSkills: "Mission/getSkills",
+    GetUserSkills: "User/userSkills",
+    GetMissionList: "Mission/getMissionList",
+    GetMissionSkills: "Mission/getMissionSkills",
+    UpdateMission: "Mission/updateMission",
+    DeleteMission: "Mission/deleteMission",
+
+
+    AddMissionTheme:"MissionTheme/addMissionTheme",
+    GetMissionThemeFromId:"MissionTheme/getMissionThemeFromId",
+    EditMissionTheme: "MissionTheme/editMissionTheme",
+    DeleteMissionTheme: "MissionTheme/deleteMissionTheme",
+
+    GetSkills:"Skill/getSkills",
+    UpdateSkillStatus:"Skill/updateSkillStatus",
+    AddSkill: "Skill/addSkill",
+    UpdateSkill: "Skill/updateSkill",
+    GetSkillById: "Skill/getSkillById"
 };
 
 export const StatusCodes = {

@@ -1,0 +1,222 @@
+<div class="container">
+  <div class="row">
+    <form class="mt-2" [formGroup]="addMissionForm">
+      <h2>Add Mission</h2>
+      <mat-divider></mat-divider>
+
+      <div class="row mt-3">
+        <div class="col-12 col-md-6">
+          <mat-label>Mission Title*</mat-label>
+            <mat-form-field appearance="outline" class="w-100 mt-1">
+            <input type="text" matInput formControlName="title" placeholder="Enter title"/>
+            @if (commonFunctionService.controlValidity(addMissionForm, 'title')) {
+              <mat-error>
+                  {{ commonFunctionService.getErrorMessage(addMissionForm, 'title', 'Mission Title') }}
+              </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-6">
+          <mat-label>Organization*</mat-label>
+          <mat-form-field appearance="outline" class="w-100 mt-1">
+            <input type="text" matInput formControlName="organization" placeholder="Enter Organization Name"/>
+            @if (commonFunctionService.controlValidity(addMissionForm, 'organization')) {
+              <mat-error>
+                  {{ commonFunctionService.getErrorMessage(addMissionForm, 'organization', 'Organization') }}
+              </mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-12">
+          <mat-label>Short Description</mat-label>
+          <mat-form-field appearance="outline" class="w-100 mt-1">
+            <input type="text" matInput formControlName="shortDescription" placeholder="Enter Short Description"/>
+            @if (commonFunctionService.controlValidity(addMissionForm, 'shortDescription')) {
+              <mat-error>
+                  {{ commonFunctionService.getErrorMessage(addMissionForm, 'shortDescription', 'Short Description') }}
+              </mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-12">
+          <mat-label>Mission Description*</mat-label>
+          <mat-form-field appearance="outline" class="w-100 mt-1">
+            <textarea rows="4" matInput formControlName="description" placeholder="Enter your comments..."></textarea>
+            @if (commonFunctionService.controlValidity(addMissionForm, 'description')) {
+              <mat-error>
+                  {{ commonFunctionService.getErrorMessage(addMissionForm, 'description', 'Description') }}
+              </mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-12 col-md-4">
+          <mat-label class="w-100">Start Date</mat-label>
+          <mat-form-field color="warn" class="w-100 mt-1">
+            <input matInput [matDatepicker]="picker1" formControlName="startDate" [matDatepickerFilter]="startDateFilter">
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            @if (commonFunctionService.controlValidity(addMissionForm, 'startDate')) {
+              <mat-error>
+                  {{ commonFunctionService.getErrorMessage(addMissionForm, 'startDate', 'Start Date') }}
+              </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-4">
+          <mat-label class="w-100">End Date</mat-label>
+          <mat-form-field color="warn" class="w-100 mt-1">
+            <input matInput [matDatepicker]="picker2" formControlName="endDate" [matDatepickerFilter]="endDateFilter">
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            @if (commonFunctionService.controlValidity(addMissionForm, 'endDate')) {
+              <mat-error>
+                  {{ commonFunctionService.getErrorMessage(addMissionForm, 'endDate', 'End Date') }}
+              </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-4">
+          <mat-label class="w-100">Registration Deadline</mat-label>
+          <mat-form-field color="warn" class="w-100 mt-1">
+            <input matInput [matDatepicker]="picker3" formControlName="registrationDeadlineDate"  [matDatepickerFilter]="registrationDeadlineFilter">
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+            @if (commonFunctionService.controlValidity(addMissionForm, 'registrationDeadlineDate')) {
+              <mat-error>
+                  {{ commonFunctionService.getErrorMessage(addMissionForm, 'registrationDeadlineDate', 'Registration Deadline Date') }}
+              </mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-12 col-md-4">
+          <mat-label>Total Seats</mat-label>
+          <mat-form-field appearance="outline" class="w-100 mt-1">
+            <input type="number" matInput formControlName="totalSeats" placeholder="Enter Total Seats"/>
+            @if (commonFunctionService.controlValidity(addMissionForm, 'totalSeats')) {
+              <mat-error>
+                  {{ commonFunctionService.getErrorMessage(addMissionForm, 'totalSeats', 'Total Seats') }}
+              </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="col-12 col-md-4">
+          <mat-label>City*</mat-label>
+            <mat-form-field appearance="outline"  class="w-100 mt-1">
+              <mat-select formControlName="city" placeholder="Select a City">
+                <mat-option value="">Select a City</mat-option>
+                <mat-option *ngFor="let city of cities" [value]="city.id.toString()">{{city.name}}</mat-option>
+              </mat-select>
+              @if (commonFunctionService.controlValidity(addMissionForm, 'city')) {
+                <mat-error>
+                    {{ commonFunctionService.getErrorMessage(addMissionForm, 'city', 'City') }}
+                </mat-error>
+              }
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-md-4">
+          <mat-label>Country*</mat-label>
+            <mat-form-field appearance="outline"  class="w-100 mt-1">
+              <mat-select formControlName="country" placeholder="Select a Country">
+                <mat-option value="">Select a Country</mat-option>
+                <mat-option *ngFor="let country of countries" [value]="country.id.toString()">{{country.name}}</mat-option>
+              </mat-select>
+              @if (commonFunctionService.controlValidity(addMissionForm, 'country')) {
+                <mat-error>
+                    {{ commonFunctionService.getErrorMessage(addMissionForm, 'country', 'Country') }}
+                </mat-error>
+              }
+            </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-12 col-md-4">
+          <mat-label>Availablity</mat-label>
+            <mat-form-field  appearance="outline"  class="w-100 mt-1">
+              <mat-select formControlName="availability" placeholder="Select your availablity">
+                <mat-option value="daily">Daily</mat-option>
+                <mat-option value="weekend">Weekend</mat-option>
+              </mat-select>
+              @if (commonFunctionService.controlValidity(addMissionForm, 'availability')) {
+                <mat-error>
+                    {{ commonFunctionService.getErrorMessage(addMissionForm, 'availability', 'Availability') }}
+                </mat-error>
+              }
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-md-4">
+          <mat-label>Theme</mat-label>
+            <mat-form-field  appearance="outline"  class="w-100 mt-1">
+              <mat-select formControlName="theme" placeholder="Select your Theme">
+                <mat-option value="">Select a Theme</mat-option>
+                <mat-option *ngFor="let theme of missionTheme" [value]="theme.id.toString()">{{theme.title}}</mat-option>
+              </mat-select>
+              @if (commonFunctionService.controlValidity(addMissionForm, 'theme')) {
+                <mat-error>
+                    {{ commonFunctionService.getErrorMessage(addMissionForm, 'theme', 'Theme') }}
+                </mat-error>
+              }
+            </mat-form-field>
+        </div>
+        <div class="col-12 col-md-4">
+          <mat-label>Mission Type</mat-label>
+            <mat-form-field  appearance="outline"  class="w-100 mt-1">
+              <mat-select formControlName="missionType" placeholder="Select Mission Type">
+                <mat-option value="Time">Time</mat-option>
+                <mat-option value="Goal">Goal</mat-option>
+              </mat-select>
+              @if (commonFunctionService.controlValidity(addMissionForm, 'missionType')) {
+                <mat-error>
+                    {{ commonFunctionService.getErrorMessage(addMissionForm, 'missionType', 'Mission Type') }}
+                </mat-error>
+              }
+            </mat-form-field>
+        </div>
+      </div>
+
+      <div class="container">
+        <h3>Add Mission Skills</h3>
+        <mat-divider></mat-divider>
+        <div class="transfer-list-container">
+          <div class="col-12 col-md-6 transfer-list">
+            <h3>Available SKills</h3>
+            <mat-list>
+              <mat-list-item *ngFor="let skill of availableSkills" (click)="selectItem(skill)" class="transfer-list-item">
+                {{ skill.skillName }}
+              </mat-list-item>
+            </mat-list>
+          </div>
+          <div class="col-12 col-md-6 transfer-list">
+            <h3>Selected Skills</h3>
+            <mat-list>
+              <mat-list-item *ngFor="let skill of selectedSkills" (click)="deselectItem(skill)" class="transfer-list-item">
+                {{ skill.skillName }}
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <button mat-stroked-button extended  class="outline-btn save-button mb-3 me-3 mt-1" (click)="onCloseClick()"> Close </button>
+        <button (click)="addMission()" mat-stroked-button extended color="warn" class="outline-btn mb-3 mt-1" style="width: 150px;"> Save </button>
+      </div>
+
+    </form>
+  </div>
+</div>

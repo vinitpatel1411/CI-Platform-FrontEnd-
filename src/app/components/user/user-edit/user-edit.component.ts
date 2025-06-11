@@ -28,6 +28,8 @@ import {
   MatDialogClose,
 } from '@angular/material/dialog';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { SkillDTO } from '../../../models/mission-listing.model';
+import { AddSkillComponent } from '../add-skill/add-skill.component';
 
 
 @Component({
@@ -45,6 +47,7 @@ export class UserEditComponent implements OnInit{
   countries: countryDTO[] = [];
   selectedCityId: number | null = 0;
   selectedCountryId: number | null = 0;
+  userSKills: SkillDTO[] = [];
 
   userEditForm: FormGroup<userEditForm> = new FormGroup<userEditForm>({
     firstName : new FormControl("", [Validators.required]),
@@ -98,6 +101,8 @@ export class UserEditComponent implements OnInit{
         }
       }
     )
+
+    this.getUserSkills();
   }
 
   loadCities(selectedCountryId:number | null){
@@ -135,6 +140,7 @@ export class UserEditComponent implements OnInit{
     this.userData.linkedInUrl = this.linkedInUrl.value;
     // this.userData.cityId = this.selectedCityId as number;
     // this.userData.countryId = this.selectedCountryId as number;
+    this.userData.skills = this.userSKills;
   }
 
   get firstName(){
@@ -220,6 +226,22 @@ export class UserEditComponent implements OnInit{
       height:'70%',
       data: {email: this.userData.email}
     });
+  }
+
+  getUserSkills(){
+    this.userService.getUserSkills(this.userData.id).subscribe(result => {
+      if(result.code === StatusCodes.Ok){
+        this.userSKills = result.data;
+      }
+    })
+  }
+
+  openAddSkillDialog(){
+    const dialogRef = this.dialog.open(AddSkillComponent, {
+      width: '50%',
+      height:'70%',
+      data: {userSkills: this.userSKills}
+    })
   }
 
 }

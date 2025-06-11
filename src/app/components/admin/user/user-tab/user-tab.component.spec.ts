@@ -11,7 +11,7 @@ describe('UserTabComponent', () => {
       imports: [UserTabComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(UserTabComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

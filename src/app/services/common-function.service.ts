@@ -72,6 +72,11 @@ export class CommonFunctionService {
     {
       return "New Password can not be same as old password";
     }
+
+    if(control?.hasError("min")){
+      return 'Total Seats must be a Valid number';
+    }
+
     return '';
   }
 }

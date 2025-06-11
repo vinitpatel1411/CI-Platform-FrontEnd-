@@ -46,3 +46,14 @@ mat-sidenav-content {
 .container {
   padding: 16px;
 }
+
+.custom-add-button {
+  background-color: white !important; /* Ensure background is white */
+  border: 1px solid orange !important; /* Orange border */
+  color: orange !important; /* Orange font color */
+}
+
+.custom-add-button:hover {
+  background-color: orange !important; /* Light orange background on hover */
+  color: white !important;
+}

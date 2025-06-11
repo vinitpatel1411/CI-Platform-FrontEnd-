@@ -196,11 +196,9 @@
             <h2>My Skills</h2>
             <mat-divider></mat-divider>
             <mat-list class="w-100 mt-3 mb-3 border p-3" role="list">
-              <mat-list-item role="listitem">Item 1</mat-list-item>
-              <mat-list-item role="listitem">Item 2</mat-list-item>
-              <mat-list-item role="listitem">Item 3</mat-list-item>
+              <mat-list-item *ngFor="let item of userSKills">{{item.skillName}}</mat-list-item>
             </mat-list>
-            <button mat-stroked-button extended  class="outline-btn mb-3 save-button"> Add   Skills </button>
+            <button mat-stroked-button extended  class="outline-btn mb-3 save-button" (click)="openAddSkillDialog()"> Add   Skills </button>
           </div>
 
           <div class="d-flex justify-content-end">

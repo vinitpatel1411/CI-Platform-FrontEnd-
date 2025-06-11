@@ -71,12 +71,26 @@ export class UserService {
     })
   }
 
+  getUserType() :string{
+    const user = localStorage.getItem('currentUser');
+    let userType = this.userRole;
+    if(user){
+      const userObj = JSON.parse(user);
+      userType = userObj.Role;
+    }
+    return userType;
+  }
+
   getUsers(): Observable<ApiResponseDTO>{
     return this.http.get<ApiResponseDTO>(baseAPIUrl + endPoint.GetUsers);
   }
 
   updateUserStatus(userDTO: CurrentUserDTO) : Observable<ApiResponseDTO>{
     return this.http.post<ApiResponseDTO>(baseAPIUrl + endPoint.UpdateUserStatus, userDTO);
+  }
+
+  getUserSkills(userId: number) : Observable<ApiResponseDTO>{
+    return this.http.get<ApiResponseDTO>(baseAPIUrl + endPoint.GetUserSkills + "?userId=" + userId);
   }
 
   deleteUser(userDTO: CurrentUserDTO) : Observable<ApiResponseDTO>{

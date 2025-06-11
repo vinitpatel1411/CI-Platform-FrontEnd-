@@ -42,6 +42,9 @@
           <ng-container *ngComponentOutlet="selectedComponent"></ng-container>
         </div>
       </div>
+      <div class="d-flex justify-content-end">
+        <button (click)="onClickBack()" mat-stroked-button extended color="warn" class="custom-add-button outline-btn mb-3 mt-1 me-2" style="width: 150px;"> Back  </button>
+      </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>

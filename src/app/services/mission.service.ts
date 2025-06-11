@@ -4,6 +4,7 @@ import { AddToFavouriteDTO, CommentDTO, MissionRatingDTO, MissionSearchDTO, Reco
 import { Observable, map } from 'rxjs';
 import { ApiResponseDTO } from '../models/apiresponse-model';
 import { baseAPIUrl, endPoint } from '../common/constant';
+import { missionDTO } from '../models/mission-models';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,30 @@ export class MissionService {
 
   GetMission(userId: Number): Observable<ApiResponseDTO>{
     return this.httpClient.get<ApiResponseDTO>(baseAPIUrl+ "Mission/missions" + "?userId=" +userId);
+  }
+
+  GetMissions(): Observable<ApiResponseDTO>{
+    return this.httpClient.get<ApiResponseDTO>(baseAPIUrl+ "Mission/missions" + "?userId=" +1);
+  }
+
+  GetMissionList(): Observable<ApiResponseDTO>{
+    return this.httpClient.get<ApiResponseDTO>(baseAPIUrl + endPoint.GetMissionList);
+  }
+
+  GetMissionSkills(missionId: number) : Observable<ApiResponseDTO>{
+    return this.httpClient.get<ApiResponseDTO>(baseAPIUrl + endPoint.GetMissionSkills + "/" + missionId);
+  }
+
+  AddMission(missionDTO:missionDTO): Observable<ApiResponseDTO>{
+    return this.httpClient.post<ApiResponseDTO>(baseAPIUrl + endPoint.AddMission, missionDTO);
+  }
+
+  UpdateMission(missionDTO: missionDTO): Observable<ApiResponseDTO>{
+    return this.httpClient.post<ApiResponseDTO>(baseAPIUrl + endPoint.UpdateMission, missionDTO);
+  }
+
+  deleteMission(missionId:number):Observable<ApiResponseDTO>{
+    return this.httpClient.delete<ApiResponseDTO>(baseAPIUrl + endPoint.DeleteMission + "?missionId=" + missionId);
   }
 
   GetMissionsByFilter(bodyData: MissionSearchDTO): Observable<ApiResponseDTO> {
@@ -51,6 +76,10 @@ export class MissionService {
 
   GetRelatedMission(bodyData: RelatedMisssionDTO): Observable<ApiResponseDTO> {
     return this.httpClient.post<ApiResponseDTO>(baseAPIUrl + endPoint.GetRelatedMission, bodyData);
+  }
+
+  getAllSkills(): Observable<ApiResponseDTO>{
+    return this.httpClient.get<ApiResponseDTO>(baseAPIUrl + endPoint.GetAllSkills);
   }
 
   downloadPDF(url:string): Observable<Blob> {

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <form class="mt-2" [formGroup]="editThemeForm">
+      <h2>Edit Mission - Theme</h2>
+      <mat-divider></mat-divider>
+
+      <div class="col-12 mt-3">
+        <mat-label>Mission-Theme Title*</mat-label>
+          <mat-form-field appearance="outline" class="w-100 mt-1">
+          <input type="text" matInput formControlName="title" placeholder="Enter title"/>
+          @if (commonFunctionService.controlValidity(editThemeForm, 'title')) {
+            <mat-error>
+                {{ commonFunctionService.getErrorMessage(editThemeForm, 'title', 'Mission-Theme Title') }}
+            </mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <button mat-stroked-button extended  class="outline-btn save-button mb-3 me-3 mt-1" (click)="onCloseClick()"> Close </button>
+        <button (click)="editMissionTheme()" mat-stroked-button extended color="warn" class="outline-btn mb-3 mt-1" style="width: 150px;"> Save </button>
+      </div>
+
+    </form>
+  </div>
+</div>

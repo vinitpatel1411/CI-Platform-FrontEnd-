@@ -1,3 +1,5 @@
+import { SkillDTO } from "./mission-listing.model";
+
 export interface Banner {
   bannerId: number;
   image: string;
@@ -48,6 +50,7 @@ export interface CurrentUserDTO {
   cityId: number;
   countryId:number;
   Role:string;
+  skills: SkillDTO[];
 }
 
 export interface checkOldPasswordDTO{
